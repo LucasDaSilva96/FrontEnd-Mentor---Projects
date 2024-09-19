@@ -2,4 +2,4 @@
 
 ## Projects:
 
-1. ### Space Tourism website
+1. **Space Tourism website**
