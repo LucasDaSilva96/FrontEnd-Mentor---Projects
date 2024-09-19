@@ -3,3 +3,4 @@
 ## Projects:
 
 1. **Space Tourism website**
+   ![Design preview for the Space tourism website coding challenge](./Space-tourism-multi-page-website/public/preview.jpg)
