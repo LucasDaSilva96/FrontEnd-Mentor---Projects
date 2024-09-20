@@ -1,16 +1,11 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
+import { RouterView } from 'vue-router'
+import HeaderNav from './components/HeaderNav.vue'
 </script>
 
 <template>
-  <header>
-    <nav>
-      <RouterLink to="/">Home</RouterLink>
-      <RouterLink to="/about">About</RouterLink>
-    </nav>
-  </header>
-
-  <RouterView />
+  <main class="bg-darkBlue w-full h-screen text-white relative font-Bellefair">
+    <HeaderNav />
+    <RouterView />
+  </main>
 </template>
-
-<style scoped></style>

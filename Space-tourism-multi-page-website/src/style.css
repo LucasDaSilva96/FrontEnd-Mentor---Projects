@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .glassBg {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(40px);
+  }
+
+  .slideIn {
+    top: 0;
+    animation: slideIn 0.5s linear;
+    right: 0;
+  }
+
+  .slideOut {
+    top: 0;
+    animation: slideOut 0.5s linear;
+    right: -100%;
+  }
+
+  .activeMobileMenu {
+    border-right: 4px solid #f9f9f9;
+  }
+
+  .activeMenu {
+    border-color: #f9f9f9;
+  }
+
+  .wrapper {
+    padding-top: 9%
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(150%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideOut {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(100%);
+  }
+}
