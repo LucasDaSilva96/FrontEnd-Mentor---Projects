@@ -51,7 +51,10 @@ export default {
         homeMobile: "url('/home/background-home-mobile.jpg')",
         destinationDesktop: "url('/destination/background-destination-desktop.jpg')",
         destinationTablet: "url('/destination/background-destination-tablet.jpg')",
-        destinationMobile: "url('/destination/background-destination-mobile.jpg')"
+        destinationMobile: "url('/destination/background-destination-mobile.jpg')",
+        crewDesktop: "url('/crew/background-crew-desktop.jpg')",
+        crewTablet: "url('/crew/background-crew-tablet.jpg')",
+        crewMobile: "url('/crew/background-crew-mobile.jpg')"
       }
     }
   },

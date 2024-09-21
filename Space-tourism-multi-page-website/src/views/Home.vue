@@ -17,13 +17,26 @@
         </p>
       </div>
 
-      <div
-        class="w-[144px] h-[144px]  md:w-[200px] md:h-[200px] lg:w-[275px] lg:h-[275px] bg-white rounded-full flex items-center justify-center shadow-sm shadow-white">
-        <RouterLink to="/destination"
-          class="text-darkBlue text-preset6 md:text-preset4 uppercase hover:scale-105 transition-transform will-change-transform active:scale-100 ">
-          Explore
-        </RouterLink>
+      <div class="group">
+
+        <div
+          class="bg-transparent p-500 lg:p-800 rounded-full transition-colors will-change-auto group-hover:bg-white/10 duration-300">
+
+          <RouterLink to="/destination" class="">
+            <div
+              class="w-[144px] h-[144px]  md:w-[200px] md:h-[200px] lg:w-[275px] lg:h-[275px] bg-white rounded-full flex items-center justify-center  ">
+
+              <p class="text-darkBlue text-preset6 md:text-preset4 uppercase transition-transform
+            will-change-transform group-hover:scale-105">
+                Explore
+              </p>
+            </div>
+          </RouterLink>
+
+        </div>
+
       </div>
+
     </div>
   </section>
 </template>

@@ -7,8 +7,13 @@ export const useNavToggle = defineStore('navToggle', () => {
     isNavOpen.value = !isNavOpen.value
   }
 
+  const closeNav = () => {
+    isNavOpen.value = false
+  }
+
   return {
     isNavOpen: computed(() => isNavOpen.value),
-    toggleNav
+    toggleNav,
+    closeNav
   }
 })

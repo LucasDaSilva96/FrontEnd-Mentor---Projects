@@ -1,11 +1,15 @@
 <script lang="ts" setup>
+import { useNavToggle } from '@/stores/toggleNav';
 import MobileNav from './MobileNav.vue'
+const navStore = useNavToggle()
 </script>
 
 <template>
   <div class="absolute top-0 left-0 w-full">
     <header class="flex justify-between items-center h-1000 lg:h-[136px] pl-300 relative">
-      <img src="/shared/logo.svg" class="w-500 md:w-600" />
+      <RouterLink to="/" @click="navStore.closeNav">
+        <img src="/shared/logo.svg" class="w-500 md:w-600" />
+      </RouterLink>
       <!-- Desktop navigation -->
       <nav class="hidden md:flex justify-evenly text-preset8 uppercase h-[90px] w-[85%] glassBg px-400">
         <RouterLink to="/"

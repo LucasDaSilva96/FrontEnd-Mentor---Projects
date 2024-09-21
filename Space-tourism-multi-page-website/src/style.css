@@ -43,6 +43,10 @@
     border-color: #f9f9f9;
     color: #f9f9f9;
   }
+
+  .activeCrew {
+    background-color: #f9f9f9;
+  }
 }
 
 @keyframes slideIn {
