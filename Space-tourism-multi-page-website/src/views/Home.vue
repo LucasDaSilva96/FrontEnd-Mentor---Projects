@@ -1,5 +1,5 @@
 <template>
-  <section class="bg-homeMobile sm:bg-homeTablet lg:bg-homeDesktop w-full h-full bg-cover">
+  <section class="bg-homeMobile sm:bg-homeTablet lg:bg-homeDesktop w-full h-full centerBg">
     <div class="wrapper container flex flex-col lg:flex lg:flex-row items-center justify-evenly h-full">
       <div class="pt-200 text-center lg:text-start flex flex-col items-center md:items-start">
         <h1 class="text-preset7 md:text-preset5 text-lightBlue flex flex-col">

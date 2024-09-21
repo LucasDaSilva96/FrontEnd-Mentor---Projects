@@ -31,6 +31,18 @@
   .wrapper {
     padding-top: 9%
   }
+
+  /* Center and scale the image nicely */
+  .centerBg {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .activeDestination {
+    border-color: #f9f9f9;
+    color: #f9f9f9;
+  }
 }
 
 @keyframes slideIn {

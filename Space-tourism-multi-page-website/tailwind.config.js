@@ -49,7 +49,10 @@ export default {
       backgroundImage: {
         homeDesktop: "url('/home/background-home-desktop.jpg')",
         homeTablet: "url('/home/background-home-tablet.jpg')",
-        homeMobile: "url('/home/background-home-mobile.jpg')"
+        homeMobile: "url('/home/background-home-mobile.jpg')",
+        destinationDesktop: "url('/destination/background-destination-desktop.jpg')",
+        destinationTablet: "url('/destination/background-destination-tablet.jpg')",
+        destinationMobile: "url('/destination/background-destination-mobile.jpg')"
       }
     }
   },
