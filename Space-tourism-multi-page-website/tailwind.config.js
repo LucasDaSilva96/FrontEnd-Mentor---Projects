@@ -9,21 +9,20 @@ export default {
       transparent: 'transparent'
     },
     fontSize: {
-      preset1: '144px',
-      preset2: '100px',
-      preset3: '56px',
-      preset4: '32px',
-      preset5: '28px',
-      preset7: '14px',
-      preset8: '16px'
+      preset1: '9rem',
+      preset2: '6.25rem',
+      preset3: '3.5rem',
+      preset4: '2rem',
+      preset5: '1.75rem',
+      preset7: '1.25rem',
+      preset8: '1rem'
     },
     container: {
       center: true,
       screens: {
-        sm: '100%',
-        md: '100%',
-        lg: '1024px',
-        xl: '1280px'
+        sm: '880px',
+        md: '1024px',
+        lg: '1440px'
       }
     },
     spacing: {
