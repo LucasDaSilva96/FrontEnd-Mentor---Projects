@@ -6,7 +6,7 @@
 
 This project is my solution to the **Space Tourism Website** challenge from [Frontend Mentor](https://www.frontendmentor.io/challenges/space-tourism-multipage-website-gRWj1URZ3). The website is built with modern front-end technologies, including **Vue 3**, **Tailwind CSS**, **GSAP**, and **TypeScript**, to create a dynamic and responsive multi-page site.
 
-**Live Demo:** [Link to live site](your-live-site-link-here)
+**Live Demo:** [Link to live site](https://space-tourism-x.netlify.app)
 
 ## Table of Contents
 
@@ -117,7 +117,7 @@ If I were to extend this project, I would consider the following:
 
 This project is deployed using **Netlify** for fast and scalable hosting. You can check the live version of the project here:
 
-**Live Demo:** [Link to live site](your-live-site-link-here)
+**Live Demo:** [Link to live site](https://space-tourism-x.netlify.app)
 
 To deploy your own copy, simply follow these steps:
 
