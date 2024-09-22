@@ -1,3 +1,14 @@
+<script setup lang="ts">
+import { gsap } from 'gsap';
+import { onMounted, watch } from 'vue';
+
+onMounted(() => {
+  gsap.fromTo("#exploreBox", { scale: 0 }, { scale: 1, duration: 1, delay: .3, ease: "power2.out" });
+});
+
+</script>
+
+
 <template>
   <section class="bg-homeMobile sm:bg-homeTablet lg:bg-homeDesktop w-full h-full centerBg">
     <div class="wrapper container flex flex-col lg:flex lg:flex-row items-center justify-evenly h-full">
@@ -23,7 +34,7 @@
           class="bg-transparent p-500 lg:p-800 rounded-full transition-colors will-change-auto group-hover:bg-white/10 duration-300">
 
 
-          <div
+          <div id="exploreBox"
             class="w-[144px] h-[144px]  md:w-[200px] md:h-[200px] lg:w-[275px] lg:h-[275px] bg-white rounded-full flex items-center justify-center  ">
 
             <p class="text-darkBlue text-preset6 md:text-preset4 uppercase transition-transform

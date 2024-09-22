@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { gsap } from 'gsap';
+import { onMounted, watch } from 'vue';
 const props = defineProps<{
   title: string;
   description: string;
@@ -7,10 +9,18 @@ const props = defineProps<{
 
 }>();
 
+onMounted(() => {
+  gsap.fromTo("#destinationBody", { opacity: 0 }, { opacity: 1, duration: 1, ease: "power2.out", delay: .5 });
+});
+
+watch(() => props.title, () => {
+  gsap.fromTo("#destinationBody", { opacity: 0 }, { opacity: 1, duration: 1, ease: "power2.out", delay: .5 });
+});
+
 </script>
 
 <template>
-  <article class="flex flex-col gap-150 items-center">
+  <article class="flex flex-col gap-150 items-center" id="destinationBody">
     <h3 class="text-preset3 uppercase">{{ title }}</h3>
 
     <p class="text-preset8 text-lightBlue leading-[27px] max-w-[327px] 

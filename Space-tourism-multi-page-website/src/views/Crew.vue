@@ -4,9 +4,22 @@ import data from "@/data/data.json"
 import { useCrewNav } from '@/stores/crewNav';
 import type { Crew } from '@/types/crew';
 import { computed } from 'vue';
+import { onMounted, watch } from 'vue';
+import { gsap } from 'gsap';
 const crewData = data.crew as Crew[]
 const crewStore = useCrewNav()
 const currentData = computed(() => crewData[crewStore.crewIndex])
+
+onMounted(() => {
+  gsap.fromTo("#crewDescriptionBox", { translateY: "-100%", opacity: 0 }, { translateY: 0, opacity: 1, duration: 1, ease: "power2.out", delay: .3 });
+  gsap.fromTo("#crew_img_container", { translateY: "100%", opacity: 0 }, { translateY: 0, opacity: 1, duration: 1, ease: "power2.out", delay: .8 });
+});
+
+watch(() => currentData.value, () => {
+  gsap.fromTo("#crewDescriptionBox", { opacity: 0 }, { opacity: 1, duration: 1, ease: "power2.out" });
+  gsap.fromTo("#crew_img_container", { translateY: "100%", opacity: 0 }, { translateY: 0, opacity: 1, duration: 1, ease: "power2.out", delay: .3 });
+});
+
 </script>
 
 
@@ -23,7 +36,7 @@ const currentData = computed(() => crewData[crewStore.crewIndex])
         class="flex flex-col items-center lg:items-start lg:gap-300 justify-around h-full text-center lg:text-start lg:pt-200 w-full">
 
 
-        <div class="flex flex-col items-center lg:items-start gap-100">
+        <div class="flex flex-col items-center lg:items-start gap-100" id="crewDescriptionBox">
           <p class="text-preset5 text-white/50 uppercase">{{ currentData.role }}</p>
           <p class="text-preset4 uppercase">{{ currentData.name }}</p>
           <p class="mt-200 max-w-[512px] text-lightBlue leading-[27px]">{{ currentData.bio }}</p>
