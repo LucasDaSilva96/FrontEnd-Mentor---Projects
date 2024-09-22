@@ -8,9 +8,9 @@ const crewStore = useCrewNav()
 </script>
 
 <template>
-  <nav class="flex items-center gap-200">
-    <button v-for="(crew, i) in crewData" @click="crewStore.setCrewIndex(i)" :key="i"
-      class="w-150 h-150 md:w-200 md:h-200 bg-white/20 rounded-full transition-colors will-change-auto hover:bg-white/50"
+  <nav class="flex items-center gap-200 lg:gap-500">
+    <button v-for="(_crew, i) in crewData" @click="crewStore.setCrewIndex(i)" :key="i"
+      class="w-150 h-150  bg-white/20 rounded-full transition-colors will-change-auto hover:bg-white/50"
       :class="{ activeCrew: i === crewStore.crewIndex }"></button>
   </nav>
 </template>
