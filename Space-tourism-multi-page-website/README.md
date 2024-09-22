@@ -1,4 +1,4 @@
-# Space Tourism Website 🚀
+# Space Tourism Website
 
 ![Design preview for the Space tourism website coding challenge](./public/shared/Space-tourism.png)
 
