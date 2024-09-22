@@ -34,7 +34,7 @@ const currentData = computed(() => crewData[crewStore.crewIndex])
       </div>
 
       <div class="relative lg:ml-400" id="crew_img_container">
-        <img :src="currentData.images.webp" alt="crew member" class="max-h-[250px] lg:max-h-[450px]" />
+        <img :src="currentData.images.webp" alt="crew member" class="max-h-[250px] lg:max-h-[570px]" />
         <div id="gradient"></div>
       </div>
     </div>

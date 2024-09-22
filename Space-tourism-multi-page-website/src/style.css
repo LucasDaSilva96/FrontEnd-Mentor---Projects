@@ -56,6 +56,12 @@
     left: 0;
     background-image: linear-gradient(to bottom, transparent, #0b0d17);
   }
+
+  .activeTech {
+    background-color: #f9f9f9;
+    color: #0b0d17;
+    border-color: #f9f9f9;
+  }
 }
 
 @keyframes slideIn {

@@ -54,7 +54,10 @@ export default {
         destinationMobile: "url('/destination/background-destination-mobile.jpg')",
         crewDesktop: "url('/crew/background-crew-desktop.jpg')",
         crewTablet: "url('/crew/background-crew-tablet.jpg')",
-        crewMobile: "url('/crew/background-crew-mobile.jpg')"
+        crewMobile: "url('/crew/background-crew-mobile.jpg')",
+        technologyDesktop: "url('/technology/background-technology-desktop.jpg')",
+        technologyTablet: "url('/technology/background-technology-tablet.jpg')",
+        technologyMobile: "url('/technology/background-technology-mobile.jpg')"
       }
     }
   },
