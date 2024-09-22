@@ -17,9 +17,13 @@ const currentData = computed(() => destination[destinationStore.destinationIndex
 </script>
 
 <template>
-  <section class="bg-destinationMobile sm:bg-destinationTablet lg:bg-destinationDesktop w-full h-full centerBg">
-    <div class="wrapper container flex items-center justify-center h-full">
-      <div class="flex flex-col items-center justify-evenly  h-full lg:flex-row">
+  <section class="bg-destinationMobile sm:bg-destinationTablet lg:bg-destinationDesktop w-full h-full centerBg px-200">
+    <div class="wrapper container flex flex-col md:flex-row items-center h-full">
+      <h2 class="flex items-center gap-300 text-preset8 md:self-start pt-300 min-w-[250px]">
+        <span class="text-white/50 font-bold">01</span>
+        <span>PICK YOUR DESTINATION</span>
+      </h2>
+      <div class="flex flex-col items-center gap-300 justify-center  h-full lg:flex-row">
 
         <DestinationHeader :image="image" />
         <div class="w-full flex flex-col items-center">

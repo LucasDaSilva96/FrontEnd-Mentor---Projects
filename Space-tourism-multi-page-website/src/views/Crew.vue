@@ -14,14 +14,14 @@ const currentData = computed(() => crewData[crewStore.crewIndex])
   <section class="bg-crewMobile sm:bg-crewTablet lg:bg-crewDesktop w-full h-full centerBg p-300 overflow-hidden">
     <div class="wrapper container flex flex-col lg:flex-row items-center justify-center lg:justify-around h-full ">
 
+      <h2 class="flex items-center gap-300 text-preset8 self-center md:self-start min-w-[250px] pt-300">
+        <span class="text-white/50 font-bold">02</span>
+        <span>MEET YOUR CREW</span>
+      </h2>
 
       <div
         class="flex flex-col items-center lg:items-start lg:gap-300 justify-around h-full text-center lg:text-start lg:pt-200 w-full">
 
-        <h2 class="flex items-center gap-300 text-preset8 self-start">
-          <span class="text-white/50 font-bold">02</span>
-          <span>MEET YOUR CREW</span>
-        </h2>
 
         <div class="flex flex-col items-center lg:items-start gap-100">
           <p class="text-preset5 text-white/50 uppercase">{{ currentData.role }}</p>

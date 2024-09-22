@@ -21,19 +21,21 @@ const currentData = computed(() => technologyData[TechnologyStore.technologyInde
         <span>SPACE LAUNCH 101</span>
 
       </h2>
-      <div class="flex flex-col justify-evenly h-full md:flex-row-reverse">
+      <div class="flex flex-col justify-evenly items-center h-full lg:flex-row-reverse">
 
-        <img class="block md:hidden w-full" :src="currentData.images.landscape" />
-        <img class="hidden md:block w-full max-h-[608px]" :src="currentData.images.portrait" />
+        <img class="block lg:hidden w-full max-h-[280px]" :src="currentData.images.landscape" />
+        <div>
+          <img class="hidden lg:block w-[608px]" :src="currentData.images.portrait" />
+        </div>
 
-        <div class="w-full flex items-center flex-col justify-evenly h-full px-200">
+        <div class="w-full flex items-center flex-col lg:flex-row justify-center gap-800 h-full px-200">
           <TechnologyNav :technologyData="technologyData" />
 
           <div class="text-center">
             <h3 class="text-preset5 text-white/50">THE TERMINOLOGY…</h3>
             <p class="text-preset4">{{ currentData.name }}</p>
 
-            <p class="max-w-[512px] leading-[27px] text-lightBlue">{{ currentData.description }}</p>
+            <p class="max-w-[512px] lg:max-w-[350px] leading-[27px] text-lightBlue">{{ currentData.description }}</p>
           </div>
         </div>
 
