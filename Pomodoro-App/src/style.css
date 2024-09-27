@@ -1,3 +1,82 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .H1 {
+    font-weight: 700;
+    line-height: 120px;
+    letter-spacing: -5px;
+    font-size: 6.25rem;
+    color: #D7E0FF;
+  }
+
+  .H2 {
+    font-weight: 700;
+    line-height: 34px;
+    font-size: 1.75rem;
+    color: #D7E0FF;
+  }
+
+  .H3 {
+    font-weight: 700;
+    line-height: 19.84px;
+    font-size: 1rem;
+    color: #D7E0FF;
+    letter-spacing: 15px;
+  }
+
+  .H4 {
+    font-weight: 700;
+    line-height: 16.12px;
+    font-size: 0.813rem;
+    color: #D7E0FF;
+    letter-spacing: 5px;
+    opacity: 0.6;
+
+  }
+
+  .Body1 {
+    font-weight: 700;
+    line-height: 18px;
+    font-size: 0.875rem;
+    color: #D7E0FF;
+  }
+
+  .Body2 {
+    font-weight: 700;
+    line-height: 14px;
+    font-size: 0.75rem;
+    color: #D7E0FF;
+    opacity: 0.4;
+  }
+
+  .displayHeader {
+    line-height: 17.36px;
+    text-align: center;
+    font-size: 0.875rem;
+    font-weight: 700;
+  }
+
+  .ButtonDefault {
+    width: 140px;
+    height: 53px;
+    border-radius: 26.5px;
+    background-color: #F87070;
+    color: #FFFFFF;
+    transition: all 0.3s linear;
+
+    &:hover {
+      background-color: #f87070a1;
+    }
+  }
+
+
+
+
+}
+
+body {
+  background-color: #1E213F;
+  color: #D7E0FF;
+}
