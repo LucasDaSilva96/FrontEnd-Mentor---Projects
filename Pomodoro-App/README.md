@@ -1,6 +1,6 @@
 # Frontend Mentor - Pomodoro app
 
-![Design preview for the Pomodoro app coding challenge](/preview.jpg)
+![Design preview for the Pomodoro app coding challenge](./public/preview.jpg)
 
 ## Welcome! 👋
 
