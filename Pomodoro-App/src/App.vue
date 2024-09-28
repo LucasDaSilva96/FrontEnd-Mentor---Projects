@@ -13,5 +13,4 @@ import Timer from './components/Timer.vue';
     <Timer />
     <Footer />
   </main>
-
 </template>
