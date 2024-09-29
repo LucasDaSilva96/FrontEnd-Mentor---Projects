@@ -13,6 +13,8 @@ export const useCountDownStore = defineStore(
     const isRunning = ref(false)
     const isPaused = ref(false)
     const isCompleted = ref(false)
+    // Track if the pomodoro is done
+    const pomodoroDone = ref(false)
 
     const amountOfPomodoros = ref(4)
 
@@ -37,6 +39,7 @@ export const useCountDownStore = defineStore(
     const running = computed(() => isRunning.value)
     const paused = computed(() => isPaused.value)
     const completed = computed(() => isCompleted.value)
+    const isDone = computed(() => pomodoroDone.value)
 
     // METHODS
     function start() {
@@ -52,6 +55,8 @@ export const useCountDownStore = defineStore(
       } else {
         setIsCompleted(false)
       }
+
+      pomodoroDone.value = false
 
       intervalId.value = setInterval(() => {
         time.value -= 1000
@@ -97,10 +102,11 @@ export const useCountDownStore = defineStore(
           setIsRunning(false)
           start()
         } else if (time.value <= 0 && amountOfPomodoros.value === -1) {
-          amountOfPomodoros.value = 4
-          clearInterval(intervalId.value!)
-          setIsRunning(false)
-          setIsCompleted(true)
+          pomodoroDone.value = true
+          isCompleted.value = true
+          setTimeout(() => {
+            reset()
+          }, 1000)
           return
         }
       }, 1000)
@@ -117,7 +123,9 @@ export const useCountDownStore = defineStore(
       setIsRunning(false)
       setIsPaused(false)
       setIsCompleted(false)
-      clearInterval(intervalId.value!)
+      if (intervalId.value) {
+        clearInterval(intervalId.value)
+      }
       time.value = TIMER_SETTING_STORE.pomodoro * 60 * 1000
       currentTime = computed(() => time.value)
       amountOfPomodoros.value = 4
@@ -137,7 +145,8 @@ export const useCountDownStore = defineStore(
       start,
       pause,
       reset,
-      beforeUnmount
+      beforeUnmount,
+      isDone
     }
   },
   {

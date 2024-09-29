@@ -25,9 +25,9 @@ onMounted(() => {
 </script>
 
 <template>
-  <Clock :time="TIMER_STORE.currentTime" :isRunning="TIMER_STORE.running" :start="TIMER_STORE.start"
-    :pause="TIMER_STORE.pause" :reset="TIMER_STORE.reset" />
+  <Clock :isPaused="TIMER_STORE.paused" :time="TIMER_STORE.currentTime" :isRunning="TIMER_STORE.running"
+    :start="TIMER_STORE.start" :pause="TIMER_STORE.pause" :reset="TIMER_STORE.reset" :isDone="TIMER_STORE.isDone" />
   <audio controls id="sound" class="sr-only">
-    <source src="../../public/sound/alarm.wav" type="audio/wav">
+    <source src="/sound/alarm.wav" type="audio/wav">
   </audio>
 </template>

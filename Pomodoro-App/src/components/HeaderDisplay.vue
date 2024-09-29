@@ -20,7 +20,7 @@ const isActive = computed(() => {
 
 
     <div
-      class="w-[120px] h-[48px] rounded-[26.5px] flex items-center justify-center opacity-50 transition-colors will-change-auto hover:opacity-100 cursor-pointer"
+      class="w-[120px] h-[48px] rounded-[26.5px] flex items-center justify-center opacity-50 transition-colors will-change-auto hover:opacity-100 "
       :class="{
         'bg-red text-darkBlue !opacity-100': currentColorStore.color === 'red' && isActive === 'pomodoro',
         'bg-blue text-darkBlue !opacity-100': currentColorStore.color === 'blue' && isActive === 'pomodoro',
@@ -31,7 +31,7 @@ const isActive = computed(() => {
     </div>
 
     <div
-      class="w-[120px] h-[48px] rounded-[26.5px] flex items-center justify-center opacity-50 transition-colors will-change-auto hover:opacity-100 cursor-pointer"
+      class="w-[120px] h-[48px] rounded-[26.5px] flex items-center justify-center opacity-50 transition-colors will-change-auto hover:opacity-100 "
       :class="{
         'bg-red text-darkBlue !opacity-100': currentColorStore.color === 'red' && isActive === 'shortBreak',
         'bg-blue text-darkBlue !opacity-100': currentColorStore.color === 'blue' && isActive === 'shortBreak',
@@ -44,7 +44,7 @@ const isActive = computed(() => {
     </div>
 
     <div
-      class="w-[120px] h-[48px] rounded-[26.5px] flex items-center justify-center opacity-50 transition-colors will-change-auto hover:opacity-100 cursor-pointer"
+      class="w-[120px] h-[48px] rounded-[26.5px] flex items-center justify-center opacity-50 transition-colors will-change-auto hover:opacity-100 "
       :class="{
         'bg-red text-darkBlue !opacity-100': currentColorStore.color === 'red' && isActive === 'longBreak',
         'bg-blue text-darkBlue !opacity-100': currentColorStore.color === 'blue' && isActive === 'longBreak',
