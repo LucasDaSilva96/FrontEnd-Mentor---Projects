@@ -7,7 +7,7 @@
     font-weight: 700;
     line-height: 120px;
     letter-spacing: -5px;
-    font-size: 6.25rem;
+    font-size: 6rem;
     color: #D7E0FF;
   }
 
@@ -65,9 +65,11 @@
     background-color: #F87070;
     color: #FFFFFF;
     transition: all 0.3s linear;
+    will-change: transform, opacity;
 
     &:hover {
-      background-color: #f87070a1;
+      transform: scale(1.03);
+      background-color: #ff9595;
     }
   }
 

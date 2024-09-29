@@ -6,9 +6,9 @@ import { useCurrentLoopStore } from './currentLoopStore'
 export const useCountDownStore = defineStore(
   'countDownStore',
   () => {
-    const TIMER_SETTING_STORE = useTimerSettingStore()
     const CURRENT_LOOP_STORE = useCurrentLoopStore()
     // STATE
+    const TIMER_SETTING_STORE = useTimerSettingStore()
     const time = ref(TIMER_SETTING_STORE.pomodoro * 60 * 1000) // in milliseconds
     const isRunning = ref(false)
     const isPaused = ref(false)
@@ -64,7 +64,9 @@ export const useCountDownStore = defineStore(
         if (time.value <= 0 && amountOfPomodoros.value === 4) {
           setIsCompleted(true)
           amountOfPomodoros.value--
-          clearInterval(intervalId.value!)
+          if (intervalId.value) {
+            clearInterval(intervalId.value)
+          }
           time.value = TIMER_SETTING_STORE.shortBreak * 60 * 1000
           CURRENT_LOOP_STORE.setCurrentLoop('shortBreak')
           setIsRunning(false)
@@ -72,7 +74,9 @@ export const useCountDownStore = defineStore(
         } else if (time.value <= 0 && amountOfPomodoros.value === 3) {
           setIsCompleted(true)
           amountOfPomodoros.value--
-          clearInterval(intervalId.value!)
+          if (intervalId.value) {
+            clearInterval(intervalId.value)
+          }
           time.value = TIMER_SETTING_STORE.pomodoro * 60 * 1000
           CURRENT_LOOP_STORE.setCurrentLoop('pomodoro')
           setIsRunning(false)
@@ -80,7 +84,9 @@ export const useCountDownStore = defineStore(
         } else if (time.value <= 0 && amountOfPomodoros.value === 2) {
           setIsCompleted(true)
           amountOfPomodoros.value--
-          clearInterval(intervalId.value!)
+          if (intervalId.value) {
+            clearInterval(intervalId.value)
+          }
           time.value = TIMER_SETTING_STORE.shortBreak * 60 * 1000
           CURRENT_LOOP_STORE.setCurrentLoop('shortBreak')
           setIsRunning(false)
@@ -88,15 +94,19 @@ export const useCountDownStore = defineStore(
         } else if (time.value <= 0 && amountOfPomodoros.value === 1) {
           setIsCompleted(true)
           amountOfPomodoros.value--
-          clearInterval(intervalId.value!)
-          time.value = TIMER_SETTING_STORE.shortBreak * 60 * 1000
-          CURRENT_LOOP_STORE.setCurrentLoop('shortBreak')
+          if (intervalId.value) {
+            clearInterval(intervalId.value)
+          }
+          time.value = TIMER_SETTING_STORE.pomodoro * 60 * 1000
+          CURRENT_LOOP_STORE.setCurrentLoop('pomodoro')
           setIsRunning(false)
           start()
         } else if (time.value <= 0 && amountOfPomodoros.value === 0) {
           setIsCompleted(true)
           amountOfPomodoros.value--
-          clearInterval(intervalId.value!)
+          if (intervalId.value) {
+            clearInterval(intervalId.value)
+          }
           time.value = TIMER_SETTING_STORE.longBreak * 60 * 1000
           CURRENT_LOOP_STORE.setCurrentLoop('longBreak')
           setIsRunning(false)
@@ -104,9 +114,10 @@ export const useCountDownStore = defineStore(
         } else if (time.value <= 0 && amountOfPomodoros.value === -1) {
           pomodoroDone.value = true
           isCompleted.value = true
-          setTimeout(() => {
-            reset()
-          }, 1000)
+          setIsRunning(false)
+          if (intervalId.value) {
+            clearInterval(intervalId.value)
+          }
           return
         }
       }, 1000)
@@ -116,7 +127,9 @@ export const useCountDownStore = defineStore(
       if (isRunning.value === false) return
       setIsRunning(false)
       setIsPaused(true)
-      clearInterval(intervalId.value!)
+      if (intervalId.value) {
+        clearInterval(intervalId.value)
+      }
     }
 
     function reset() {
@@ -130,6 +143,7 @@ export const useCountDownStore = defineStore(
       currentTime = computed(() => time.value)
       amountOfPomodoros.value = 4
       CURRENT_LOOP_STORE.setCurrentLoop('pomodoro')
+      start()
     }
 
     // LIFECYCLE

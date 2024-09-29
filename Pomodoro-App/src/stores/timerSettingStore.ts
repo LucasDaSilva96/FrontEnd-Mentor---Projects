@@ -5,9 +5,9 @@ export const useTimerSettingStore = defineStore(
   'timerSettingStore',
   () => {
     // STATE
-    const pomodoroTime = ref(1)
-    const shortBreakTime = ref(1)
-    const longBreakTime = ref(1)
+    const pomodoroTime = ref(25)
+    const shortBreakTime = ref(5)
+    const longBreakTime = ref(15)
 
     // SETTERS
     function setPomodoroTime(value: number) {

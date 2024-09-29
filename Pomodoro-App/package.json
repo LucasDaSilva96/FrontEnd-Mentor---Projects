@@ -13,6 +13,7 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@kalimahapps/vue-icons": "^1.7.1",
     "@vueuse/sound": "^2.0.1",
     "pinia": "^2.1.7",
     "pinia-plugin-persistedstate": "^4.0.2",
