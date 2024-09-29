@@ -53,6 +53,6 @@ In this section, I want to highlight areas that I plan to focus on in future pro
 
 ## Author
 
-- Website - [Add your name here](https://www.your-site.com)
+- Website - [www.pomodoro.com](https://main--pomodoro-just-dot-it.netlify.app/)
 - Frontend Mentor - [@LucasDaSilva96](https://www.frontendmentor.io/profile/LucasDaSilva96)
 - LinkedIn - [Lucas Da Silva](www.linkedin.com/in/lucas-da-silva-9955911a0)
