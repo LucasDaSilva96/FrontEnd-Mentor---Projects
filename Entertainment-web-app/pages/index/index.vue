@@ -1,11 +1,4 @@
-<script setup lang="ts">
-definePageMeta({
-  middleware: [
-    'auth',
-    // Add in more middleware here
-  ]
-});
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <h1>Hello from index / main page</h1>
