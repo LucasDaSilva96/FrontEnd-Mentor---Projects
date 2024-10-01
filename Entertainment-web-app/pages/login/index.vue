@@ -1,5 +1,5 @@
 <script setup lang="ts"></script>
 
 <template>
-  <h1>Hello from auth page</h1>
+  <h1 class="text-center py-2">Hello from auth page</h1>
 </template>
