@@ -1,22 +1,19 @@
 <script setup lang="ts">
-const title = ref('Login')
+// SEO
+useSeoMeta({
+  title: 'Login',
+  description: 'Login to your account',
+  keywords: 'login, account, authentication',
+  applicationName: 'Entertainment Web App',
+})
 
-const { data, status } = useLazyFetch('/api/hello')
 
 </script>
 
 <template>
-  <!-- SEO -->
 
-  <Head>
-    <Title>Login</Title>
-    <Meta name="description" :content="title">
-    </Meta>
-  </Head>
+  <h1 class="heading-L">Login</h1>
 
+  <LoginForm />
 
-  <h1 class="text-center py-2">Hello from auth page</h1>
-  <p v-if="status === 'pending'" class="animate-bounce">Loading..</p>
-  <p v-else-if="status === 'error'">Error</p>
-  <p v-else-if="status === 'success'">{{ data }}</p>
 </template>

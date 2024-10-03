@@ -1,3 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+  font-family: 'Outfit', sans-serif !important;
+}
+
+@layer components {
+  .heading-L {
+    @apply leading-[40.32px] text-[32px] font-normal tracking-[-0.5px];
+  }
+
+  .heading-M {
+    @apply leading-[30.24px] text-[24px] font-normal;
+  }
+
+  .heading-S {
+    @apply leading-[30.24px] text-[24px] font-normal;
+  }
+
+  .headingXS {
+    @apply leading-[22.68px] text-[18px] font-normal;
+  }
+
+  .body-M {
+    @apply leading-[18.9px] text-[15px] font-normal;
+  }
+
+  .body-S {
+    @apply leading-[16.38px] text-[13px] font-normal;
+  }
+}
