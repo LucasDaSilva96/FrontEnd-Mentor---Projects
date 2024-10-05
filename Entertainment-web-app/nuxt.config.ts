@@ -17,6 +17,12 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
   css: ['~/assets/css/main.css'],
   devtools: { enabled: false },
-  modules: ['nuxt-directus', 'nuxt-zod-i18n', '@nuxtjs/i18n', '@nuxt/ui'],
+  modules: [
+    'nuxt-directus',
+    'nuxt-zod-i18n',
+    '@nuxtjs/i18n',
+    '@nuxt/ui',
+    '@nuxt/image',
+  ],
   pages: true,
 });

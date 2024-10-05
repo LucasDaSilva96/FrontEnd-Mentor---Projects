@@ -11,9 +11,9 @@ useSeoMeta({
 </script>
 
 <template>
-
-  <h1 class="heading-L">Login</h1>
-
-  <LoginForm />
+  <section class="w-full h-screen flex flex-col items-center p-4 justify-center gap-14">
+    <img src="../../assets/logo.svg" alt="logo icon" />
+    <LoginForm />
+  </section>
 
 </template>
