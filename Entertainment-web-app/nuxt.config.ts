@@ -24,5 +24,13 @@ export default defineNuxtConfig({
     '@nuxt/ui',
     '@nuxt/image',
   ],
+  runtimeConfig: {
+    public: {
+      directus: {
+        url: 'https://directus.pizza',
+        autoRefresh: true,
+      },
+    },
+  },
   pages: true,
 });

@@ -1,7 +1,11 @@
 <template>
   <div class="font-outline">
-    <NuxtLayout>
+
+    <UContainer>
       <NuxtPage />
-    </NuxtLayout>
+    </UContainer>
+
+    <UNotifications />
+
   </div>
 </template>

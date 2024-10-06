@@ -2,11 +2,17 @@
 import { type SignUpSchema, signUpSchema } from '~/schemas/signUp';
 import type { FormSubmitEvent } from '~/types/form';
 
+const toast = useToast()
+
+const { createUser } = useDirectusAuth();
+
 const state = reactive({
   email: "",
   password: "",
   passwordConfirmation: ""
 })
+
+const isLoading = ref(false)
 
 
 
@@ -14,7 +20,35 @@ async function onSubmit(event: FormSubmitEvent<SignUpSchema>) {
   if (!event.data) return
   const { email, password, passwordConfirmation } = event.data
   if (!email || !password || !passwordConfirmation) return
-  console.log('Sign up', email, password, passwordConfirmation)
+
+  try {
+    isLoading.value = true
+
+    const newUser = await createUser({ email, password })
+
+    if (!newUser?.email) {
+      throw new Error('User not created. Please try again')
+    }
+
+    toast.add({
+      title: 'Success',
+      description: 'User created successfully',
+      icon: 'i-mdi-check',
+      color: 'green'
+    })
+
+    await navigateTo('/login')
+
+  } catch (error) {
+    toast.add({
+      title: 'Error',
+      description: catchError(error),
+      icon: 'i-mdi-alien',
+      color: 'gray'
+    })
+  } finally {
+    isLoading.value = false
+  }
 
 }
 
@@ -29,27 +63,36 @@ async function onSubmit(event: FormSubmitEvent<SignUpSchema>) {
     <UForm :schema="signUpSchema" :state="state" class="space-y-6" @submit.prevent="onSubmit">
 
 
-      <UFormGroup name="email" autocomplete="email" class="text-center text-red">
-        <UInput v-model="state.email" placeholder="Email address" variant="none"
+      <UFormGroup name="email" class="text-center text-red">
+        <UInput v-model="state.email" autocomplete="email" placeholder="Email address" variant="none"
           class="text-white text-center border-b border-white/50  py-2" />
       </UFormGroup>
 
-      <UFormGroup name="password" autocomplete="password" class="text-center text-red">
-        <UInput v-model="state.password" type="password" placeholder="Password" variant="none"
-          class="text-white border-b border-white/50 py-2" />
+      <UFormGroup name="password" class="text-center text-red">
+        <UInput v-model="state.password" autocomplete="new-password" type="password" placeholder="Password"
+          variant="none" class="text-white border-b border-white/50 py-2" />
       </UFormGroup>
 
 
-      <UFormGroup name="passwordConfirmation" autocomplete="off" class="text-center text-red">
-        <UInput v-model="state.passwordConfirmation" type="password" placeholder="Repeat password" variant="none"
-          class="text-white border-b border-white/50 py-2" />
+      <UFormGroup name="passwordConfirmation" class="text-center text-red">
+        <UInput v-model="state.passwordConfirmation" autocomplete="off" type="password" placeholder="Repeat password"
+          variant="none" class="text-white border-b border-white/50 py-2" />
       </UFormGroup>
 
 
 
-      <button type="submit"
-        class="bg-red w-full rounded-md py-3 transition-colors hover:bg-white hover:text-black body-M focus:bg-red focus:text-white">Create
-        an account</button>
+      <button type="submit" :disabled="isLoading"
+        class="bg-red w-full flex items-center justify-center rounded-md py-3 transition-colors hover:bg-white hover:text-black body-M focus:bg-red focus:text-white">
+        <span v-if="!isLoading">
+          Create an account
+        </span>
+        <p v-else class="flex items-center gap-2">
+          <span class="mr-2">Creating...</span>
+          <UIcon name="i-mdi-loading" class="animate-spin" size="22" />
+        </p>
+      </button>
+
+
     </UForm>
 
     <div>

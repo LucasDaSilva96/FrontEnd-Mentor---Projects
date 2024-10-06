@@ -1,9 +1,13 @@
-export default defineNuxtRouteMiddleware((to, from) => {
-  const { value } = useDirectusUser();
+export default defineNuxtRouteMiddleware(async (to, _from) => {
+  if (to.path === '/login' || to.path === '/signUp') return;
 
-  if (to.path.includes('signUp')) return;
-
-  if (!value && !to.path.includes('login')) {
+  const { fetchUser, setUser } = useDirectusAuth();
+  const user = useDirectusUser();
+  if (!user.value) {
+    const user = await fetchUser();
+    setUser(user.value);
+  }
+  if (!user.value) {
     return navigateTo('/login');
   }
 });
