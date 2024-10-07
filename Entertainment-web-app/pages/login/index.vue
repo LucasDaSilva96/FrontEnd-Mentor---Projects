@@ -7,6 +7,12 @@ useSeoMeta({
   applicationName: 'Entertainment Web App',
 })
 
+const user = useDirectusUser();
+
+if (user.value) {
+  navigateTo('/')
+}
+
 
 </script>
 

@@ -22,7 +22,7 @@ async function onSubmit(event: FormSubmitEvent<LoginSchema>) {
   try {
     isLoading.value = true
 
-    await login({ email, password })
+    await login({ email, password });
 
     await navigateTo('/')
 

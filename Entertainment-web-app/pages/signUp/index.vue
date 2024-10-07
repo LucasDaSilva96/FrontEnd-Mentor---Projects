@@ -11,6 +11,13 @@ useHead({
   ]
 })
 
+const user = useDirectusUser();
+
+if (user.value) {
+  navigateTo('/')
+}
+
+
 </script>
 
 <template>
