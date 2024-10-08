@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts">
 definePageMeta({
   layout: 'home',
 })
@@ -6,6 +6,6 @@ definePageMeta({
 
 <template>
   <h1>
-    Hello from index / movies page
+    Hello from index / bookmark page
   </h1>
 </template>

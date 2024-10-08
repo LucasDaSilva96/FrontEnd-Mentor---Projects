@@ -1,5 +1,6 @@
 <script setup lang="ts">
 // SEO
+
 useSeoMeta({
   title: 'Login',
   description: 'Login to your account',
