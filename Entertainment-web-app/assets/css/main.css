@@ -32,3 +32,8 @@ body {
     @apply leading-[16.38px] text-[13px] font-normal;
   }
 }
+
+.activeNav {
+  fill: #ffffff !important;
+  color: #ffffff !important;
+}

@@ -26,8 +26,8 @@ async function onSubmit(event: FormSubmitEvent<SignUpSchema>) {
 
     const newUser = await createUser({ email, password })
 
-    if (!newUser?.email) {
-      throw new Error('User not created. Please try again')
+    if (!newUser) {
+      throw new Error('User not created. Try again.')
     }
 
     toast.add({

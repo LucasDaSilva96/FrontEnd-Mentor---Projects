@@ -11,6 +11,9 @@ export default defineNuxtConfig({
       ],
     },
   },
+  image: {
+    domains: ['https://entertainment-web-app.directus.app'],
+  },
   alias: {
     assets: '/<rootDir>/assets',
   },

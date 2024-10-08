@@ -1,11 +1,12 @@
 <template>
   <div class="font-outline">
 
-    <UContainer>
-      <NuxtPage />
-    </UContainer>
-
-    <UNotifications />
+    <NuxtLayout>
+      <UContainer>
+        <NuxtPage />
+      </UContainer>
+      <UNotifications />
+    </NuxtLayout>
 
   </div>
 </template>
