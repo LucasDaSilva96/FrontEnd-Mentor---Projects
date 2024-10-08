@@ -26,6 +26,7 @@ export default defineNuxtConfig({
     '@nuxtjs/i18n',
     '@nuxt/ui',
     '@nuxt/image',
+    'nuxt-swiper',
   ],
 
   runtimeConfig: {

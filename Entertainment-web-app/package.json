@@ -15,7 +15,9 @@
     "@nuxtjs/i18n": "^8.5.5",
     "nuxt": "^3.13.0",
     "nuxt-directus": "^5.6.1",
+    "nuxt-swiper": "^1.2.2",
     "nuxt-zod-i18n": "^1.10.0",
+    "swiper": "^11.1.14",
     "vue": "latest",
     "vue-router": "latest",
     "zod": "^3.23.8"

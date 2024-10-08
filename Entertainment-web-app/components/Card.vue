@@ -24,11 +24,10 @@ const isTablet = computed(() => screenWidth.value >= 768 && screenWidth.value < 
 </script>
 
 <template>
-  <article
-    class="relative w-[164px] h-[110px] md:h-[140px] object-contain bg-center bg-no-repeat overflow-hidden rounded-xl group"
-    :class="{
-      'w-[320px] md:w-[440px] min-h-[220px] fill-white': props.data.isTrending,
-    }"
+  <article class="relative object-contain bg-center bg-no-repeat overflow-hidden rounded-xl group" :class="{
+    'w-[320px] md:w-[440px] min-h-[220px] fill-white': props.data.isTrending,
+    'w-[164px] h-[110px] md:h-[140px]': !props.data.isTrending,
+  }"
     :style="{ backgroundImage: `url(${isMobile ? props.data.thumbnail_small : isTablet ? props.data.thumbnail_medium : props.data.thumbnail_large})` }">
 
     <div v-if="props.data.isTrending" class="absolute w-full h-full top-0 left-0 flex flex-col py-2 px-4">
@@ -51,10 +50,10 @@ const isTablet = computed(() => screenWidth.value >= 768 && screenWidth.value < 
           <span>{{ props.data.year }}</span>
           <span class="w-1 h-1 bg-white rounded-full"></span>
           <span v-if="props.data.category === 'Movie'">
-            <svg width="17" height="20" xmlns="http://www.w3.org/2000/svg">
+            <svg width="12" height="12" xmlns="http://www.w3.org/2000/svg">
               <path
-                d="M15.387 0c.202 0 .396.04.581.119.291.115.522.295.694.542.172.247.258.52.258.82v17.038c0 .3-.086.573-.258.82a1.49 1.49 0 0 1-.694.542 1.49 1.49 0 0 1-.581.106c-.423 0-.79-.141-1.098-.423L8.46 13.959l-5.83 5.605c-.317.29-.682.436-1.097.436-.202 0-.396-.04-.581-.119a1.49 1.49 0 0 1-.694-.542A1.402 1.402 0 0 1 0 18.52V1.481c0-.3.086-.573.258-.82A1.49 1.49 0 0 1 .952.119C1.137.039 1.33 0 1.533 0h13.854Z"
-                fill="#FFF" opacity="0.75" />
+                d="M10.173 0H1.827A1.827 1.827 0 0 0 0 1.827v8.346C0 11.183.818 12 1.827 12h8.346A1.827 1.827 0 0 0 12 10.173V1.827A1.827 1.827 0 0 0 10.173 0ZM2.4 5.4H1.2V4.2h1.2v1.2ZM1.2 6.6h1.2v1.2H1.2V6.6Zm9.6-1.2H9.6V4.2h1.2v1.2ZM9.6 6.6h1.2v1.2H9.6V6.6Zm1.2-4.956V2.4H9.6V1.2h.756a.444.444 0 0 1 .444.444ZM1.644 1.2H2.4v1.2H1.2v-.756a.444.444 0 0 1 .444-.444ZM1.2 10.356V9.6h1.2v1.2h-.756a.444.444 0 0 1-.444-.444Zm9.6 0a.444.444 0 0 1-.444.444H9.6V9.6h1.2v.756Z"
+                fill="#FFF" opacity=".75" />
             </svg>
           </span>
 
@@ -79,7 +78,7 @@ const isTablet = computed(() => screenWidth.value >= 768 && screenWidth.value < 
     </div>
 
     <div
-      class="absolute w-full h-full top-0 left-0  hidden group-hover:flex backdrop-blur-[0.5px] items-center justify-center">
+      class="absolute w-full h-full top-0 left-0  hidden group-hover:flex backdrop-blur-[0.5px] items-center justify-center cursor-grab">
       <button class="min-w-[117px] shadow-md bg-white/25 p-2 rounded-3xl flex items-center gap-4">
         <svg width="30" height="30" xmlns="http://www.w3.org/2000/svg">
           <path

@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import type { DataItem } from '~/types/data';
-
 definePageMeta({
   layout: 'home'
 })
@@ -12,14 +11,29 @@ useSeoMeta({
   keywords: 'Entertainment, Web App',
 });
 
-const { logout } = useDirectusAuth();
 
 
 const toast = useToast();
 const { getItems } = useDirectusItems();
 const data = ref<DataItem[]>([])
 
+const isLoading = ref(true)
+
+const isTrendingData = computed<DataItem[]>(() => data.value.filter(item => item.isTrending))
+
+const notTrendingData = computed<DataItem[]>(() => data.value.filter(item => !item.isTrending))
+
+
+const screenWidth = ref(window.innerWidth);
+
+const amountOfSlides = computed(() => {
+  if (screenWidth.value < 700) return 1
+  return 2
+})
+
 onMounted(async () => {
+
+
   try {
     const items = await getItems<DataItem>({ collection: 'data' })
     if (!items) return
@@ -40,24 +54,53 @@ onMounted(async () => {
       icon: 'i-mdi-alien',
       color: 'gray'
     })
+  } finally {
+    isLoading.value = false
   }
-})
 
-const handleLogout = async () => {
-  await logout();
-  return navigateTo('/login');
-};
+  window.addEventListener('resize', () => {
+    screenWidth.value = window.innerWidth;
+  });
+  return () => {
+    window.removeEventListener('resize', () => {
+      screenWidth.value = window.innerWidth;
+    });
+  };
+
+})
 
 
 </script>
 
 <template>
 
-  <header class="flex flex-col gap-4 w-full">
-    <h1 class="heading-L">Trending</h1>
+  <div v-if="!isLoading">
 
-    <Card v-for="(item, index) in data" :key="index" :data="item" />
-  </header>
+    <header class="flex flex-col gap-4 w-full overflow-hidden">
+      <h1 class="heading-L">Trending</h1>
 
+      <swiper-container v-if="isTrendingData" :slides-per-view="amountOfSlides" class="w-[1200px] md:space-x-[-130px]">
+
+        <swiper-slide v-for="(item, index) in isTrendingData" :key="index">
+          <Card :data="item" />
+        </swiper-slide>
+        <swiper-slide class="min-w-[100px] hidden md:block"></swiper-slide>
+      </swiper-container>
+
+
+
+    </header>
+
+    <section class="w-full space-y-4 mt-4">
+      <h2 class="heading-L">Recommended for you</h2>
+
+      <div v-if="notTrendingData" class="flex items-center gap-4 flex-wrap">
+        <Card v-for="(item, index) in notTrendingData" :key="index" :data="item" />
+      </div>
+    </section>
+
+  </div>
+
+  <Loader :isLoading="isLoading" />
 
 </template>

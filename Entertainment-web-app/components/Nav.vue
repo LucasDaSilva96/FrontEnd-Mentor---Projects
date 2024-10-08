@@ -1,4 +1,12 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const { logout } = useDirectusAuth()
+
+const handleLogout = async () => {
+  await logout();
+  return navigateTo('/login');
+};
+
+</script>
 
 <template>
   <header
@@ -40,7 +48,8 @@
 
     </nav>
 
-    <div class="w-10 h-10 p-0.5 rounded-full relative border-transparent bg-slate-50 border">
+    <div @click="handleLogout"
+      class="cursor-pointer w-10 h-10 p-0.5 rounded-full relative border-transparent bg-slate-50 border">
       <img src="../assets/image-avatar.png" alt="Logo" class="w-full h-full" />
     </div>
 
