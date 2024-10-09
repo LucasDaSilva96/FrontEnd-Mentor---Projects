@@ -1,6 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   app: {
+    baseURL: '/',
     head: {
       title: 'Entertainment Web App',
       meta: [
@@ -19,7 +20,7 @@ export default defineNuxtConfig({
   },
   compatibilityDate: '2024-04-03',
   css: ['~/assets/css/main.css'],
-  devtools: { enabled: false },
+  devtools: { enabled: true },
   modules: [
     'nuxt-directus',
     'nuxt-zod-i18n',
@@ -28,6 +29,10 @@ export default defineNuxtConfig({
     '@nuxt/image',
     'nuxt-swiper',
   ],
+  swiper: {
+    prefix: 'Swiper',
+    styleLang: 'css',
+  },
 
   runtimeConfig: {
     public: {

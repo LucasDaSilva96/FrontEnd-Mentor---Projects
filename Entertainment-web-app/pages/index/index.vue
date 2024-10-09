@@ -1,13 +1,14 @@
 <script setup lang="ts">
 import type { DataItem } from '~/types/data';
 definePageMeta({
-  layout: 'home'
-})
-
+  layout: 'home',
+  keepalive: true,
+});
 
 useSeoMeta({
   title: 'Entertainment Web App',
-  description: 'Entertainment Web App. This is the main page of the Entertainment Web App.',
+  description:
+    'Entertainment Web App. This is the main page of the Entertainment Web App.',
   keywords: 'Entertainment, Web App',
 });
 
@@ -15,82 +16,61 @@ useSeoMeta({
 
 const toast = useToast();
 const { getItems } = useDirectusItems();
-const data = ref<DataItem[]>([])
+const data = ref<DataItem[]>([]);
 
-const isLoading = ref(true)
+const isLoading = useState('isLoading', () => true);
 
-const isTrendingData = computed<DataItem[]>(() => data.value.filter(item => item.isTrending))
+const isTrendingData = computed<DataItem[]>(() =>
+  data.value.filter((item) => item.isTrending)
+);
 
-const notTrendingData = computed<DataItem[]>(() => data.value.filter(item => !item.isTrending))
-
-
-const screenWidth = ref(window.innerWidth);
-
-const amountOfSlides = computed(() => {
-  if (screenWidth.value < 700) return 1
-  return 2
-})
-
-onMounted(async () => {
+const notTrendingData = computed<DataItem[]>(() =>
+  data.value.filter((item) => !item.isTrending)
+);
 
 
+await useAsyncData('data', async () => {
   try {
-    const items = await getItems<DataItem>({ collection: 'data' })
-    if (!items) return
+
+    const items = await getItems<DataItem>({ collection: 'data' });
+
+    if (!items) {
+      throw new Error('No items found');
+    }
 
     // Create image url
-    items.forEach(item => {
-      item.thumbnail_large = createImageUrl(item.thumbnail_large)
-      item.thumbnail_small = createImageUrl(item.thumbnail_small)
-      item.thumbnail_medium = createImageUrl(item.thumbnail_medium)
-    })
+    items.forEach((item) => {
+      item.thumbnail_large = createImageUrl(item.thumbnail_large);
+      item.thumbnail_small = createImageUrl(item.thumbnail_small);
+      item.thumbnail_medium = createImageUrl(item.thumbnail_medium);
+    });
 
-    data.value = items
+    data.value = items;
+
   } catch (error) {
-    console.error(error)
+    console.error(error);
     toast.add({
       title: 'Error',
       description: catchError(error),
       icon: 'i-mdi-alien',
-      color: 'gray'
-    })
-  } finally {
-    isLoading.value = false
-  }
-
-  window.addEventListener('resize', () => {
-    screenWidth.value = window.innerWidth;
-  });
-  return () => {
-    window.removeEventListener('resize', () => {
-      screenWidth.value = window.innerWidth;
+      color: 'gray',
     });
-  };
-
-})
+  } finally {
+    isLoading.value = false;
+  }
+});
 
 
 </script>
 
 <template>
-
-  <div v-if="!isLoading">
-
+  <div v-if="!isLoading && data">
     <header class="flex flex-col gap-4 w-full overflow-hidden">
       <h1 class="heading-L">Trending</h1>
 
-      <swiper-container v-if="isTrendingData" :slides-per-view="amountOfSlides" class="w-[1200px] md:space-x-[-130px]">
-
-        <swiper-slide v-for="(item, index) in isTrendingData" :key="index">
-          <Card :data="item" />
-        </swiper-slide>
-        <swiper-slide class="min-w-[100px] hidden md:block"></swiper-slide>
-      </swiper-container>
-
-
+      <Carousel :isTrendingData="isTrendingData" />
 
     </header>
-
     <section class="w-full space-y-4 mt-4">
       <h2 class="heading-L">Recommended for you</h2>
 
@@ -98,9 +78,7 @@ onMounted(async () => {
         <Card v-for="(item, index) in notTrendingData" :key="index" :data="item" />
       </div>
     </section>
-
   </div>
 
-  <Loader :isLoading="isLoading" />
-
+  <Loader :isLoading="isLoading || false" />
 </template>

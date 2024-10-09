@@ -1,7 +1,10 @@
 <script setup lang="ts">
 definePageMeta({
   layout: 'home',
-})</script>
+  keepalive: true,
+})
+
+</script>
 
 <template>
   <h1>
