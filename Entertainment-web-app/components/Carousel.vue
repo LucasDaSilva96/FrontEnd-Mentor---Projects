@@ -39,12 +39,13 @@ const props = defineProps<{
 
 
 <template>
-  <ClientOnly fallback="Loading...">
-    <Swiper v-if="props.isTrendingData.length" :slides-per-view="amountOfSlides" class="w-full min-w-[1000px]"
-      :space-between="0">
+  <ClientOnly fallback-tag="span" fallback="Loading...">
+
+    <Swiper v-if="props.isTrendingData.length" class="w-full min-w-[900px] " :slides-per-view="amountOfSlides">
       <SwiperSlide v-for="(item, index) in isTrendingData" :key="index">
         <Card :data="item" />
       </SwiperSlide>
     </Swiper>
+
   </ClientOnly>
 </template>

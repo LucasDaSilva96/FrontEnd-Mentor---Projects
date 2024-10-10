@@ -2,7 +2,7 @@
 import type { DataItem } from '~/types/data';
 definePageMeta({
   layout: 'home',
-  keepalive: true,
+
 });
 
 useSeoMeta({
@@ -28,14 +28,14 @@ const notTrendingData = computed<DataItem[]>(() =>
   data.value.filter((item) => !item.isTrending)
 );
 
+onMounted(async () => {
 
-await useAsyncData('data', async () => {
   try {
 
-    const items = await getItems<DataItem>({ collection: 'data' });
+    const items = await getItems<DataItem>({ collection: 'data' }) || [];
 
-    if (!items) {
-      throw new Error('No items found');
+    if (!items || items.length === 0) {
+      return data.value = [];
     }
 
     // Create image url
@@ -45,7 +45,7 @@ await useAsyncData('data', async () => {
       item.thumbnail_medium = createImageUrl(item.thumbnail_medium);
     });
 
-    data.value = items;
+    return data.value = items;
 
   } catch (error) {
     console.error(error);
@@ -58,14 +58,14 @@ await useAsyncData('data', async () => {
   } finally {
     isLoading.value = false;
   }
-});
 
+})
 
 </script>
 
 <template>
   <div v-if="!isLoading && data">
-    <header class="flex flex-col gap-4 w-full overflow-hidden">
+    <header class="max-w-[1100px] space-y-4 overflow-hidden">
       <h1 class="heading-L">Trending</h1>
 
       <Carousel :isTrendingData="isTrendingData" />
@@ -73,6 +73,7 @@ await useAsyncData('data', async () => {
     </header>
     <section class="w-full space-y-4 mt-4">
       <h2 class="heading-L">Recommended for you</h2>
+
 
       <div v-if="notTrendingData" class="flex items-center gap-4 flex-wrap">
         <Card v-for="(item, index) in notTrendingData" :key="index" :data="item" />
