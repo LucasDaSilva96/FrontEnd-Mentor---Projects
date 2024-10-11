@@ -28,12 +28,15 @@ export default defineNuxtConfig({
     '@nuxt/ui',
     '@nuxt/image',
     'nuxt-swiper',
+    '@pinia/nuxt',
   ],
   swiper: {
     prefix: 'Swiper',
     styleLang: 'css',
   },
-
+  imports: {
+    dirs: ['stores'],
+  },
   runtimeConfig: {
     public: {
       directus: {

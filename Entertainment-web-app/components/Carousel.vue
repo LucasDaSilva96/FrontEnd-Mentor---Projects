@@ -43,7 +43,7 @@ const props = defineProps<{
 
     <Swiper v-if="props.isTrendingData.length" class="w-full min-w-[900px] " :slides-per-view="amountOfSlides">
       <SwiperSlide v-for="(item, index) in isTrendingData" :key="index">
-        <Card :data="item" />
+        <Card :is-carousel="true" :data="item" />
       </SwiperSlide>
     </Swiper>
 

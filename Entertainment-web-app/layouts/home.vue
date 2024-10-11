@@ -1,3 +1,8 @@
+<script setup lang="ts">
+
+const loadingStore = useLoadingStore()
+</script>
+
 <template>
   <div class="w-full flex flex-col lg:flex-row">
     <div class="p-4 lg:min-w-[90px]">
@@ -9,5 +14,6 @@
       <SearchBar placeholder="Search for movies or TV series" />
       <slot />
     </main>
+    <Loader :isLoading="loadingStore.isLoading || false" />
   </div>
 </template>

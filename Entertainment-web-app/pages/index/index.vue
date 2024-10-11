@@ -16,36 +16,33 @@ useSeoMeta({
 
 const toast = useToast();
 const { getItems } = useDirectusItems();
-const data = ref<DataItem[]>([]);
 
-const isLoading = useState('isLoading', () => true);
 
-const isTrendingData = computed<DataItem[]>(() =>
-  data.value.filter((item) => item.isTrending)
-);
+const dataStore = useDataStore();
 
-const notTrendingData = computed<DataItem[]>(() =>
-  data.value.filter((item) => !item.isTrending)
-);
+const { getDataAllData: data, getIsTrending: isTrendingData, getNotTrending: notTrendingData } = storeToRefs(dataStore)
+
+
+const loadingStore = useLoadingStore()
+const { isLoading } = storeToRefs(loadingStore)
+
 
 onMounted(async () => {
 
   try {
 
-    const items = await getItems<DataItem>({ collection: 'data' }) || [];
+    if (!dataStore.getDataAllData || !dataStore.getDataAllData.length) {
 
-    if (!items || items.length === 0) {
-      return data.value = [];
+
+      loadingStore.setLoading(true)
+
+      const items = await getItems<DataItem>({ collection: 'data' }) || [];
+
+      dataStore.setData(items)
     }
 
-    // Create image url
-    items.forEach((item) => {
-      item.thumbnail_large = createImageUrl(item.thumbnail_large);
-      item.thumbnail_small = createImageUrl(item.thumbnail_small);
-      item.thumbnail_medium = createImageUrl(item.thumbnail_medium);
-    });
 
-    return data.value = items;
+    return
 
   } catch (error) {
     console.error(error);
@@ -56,10 +53,11 @@ onMounted(async () => {
       color: 'gray',
     });
   } finally {
-    isLoading.value = false;
+    loadingStore.setLoading(false)
   }
 
 })
+
 
 </script>
 
@@ -76,10 +74,9 @@ onMounted(async () => {
 
 
       <div v-if="notTrendingData" class="flex items-center gap-4 flex-wrap">
-        <Card v-for="(item, index) in notTrendingData" :key="index" :data="item" />
+        <Card :is-carousel="false" v-for="(item, index) in notTrendingData" :key="index" :data="item" />
       </div>
     </section>
   </div>
 
-  <Loader :isLoading="isLoading || false" />
 </template>

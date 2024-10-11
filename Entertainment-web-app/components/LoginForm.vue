@@ -11,7 +11,8 @@ const state = reactive({
   password: ""
 })
 
-const isLoading = ref(false)
+const loadingStore = useLoadingStore()
+const { isLoading } = storeToRefs(loadingStore)
 
 
 async function onSubmit(event: FormSubmitEvent<LoginSchema>) {
@@ -20,12 +21,12 @@ async function onSubmit(event: FormSubmitEvent<LoginSchema>) {
   if (!email || !password) return
 
   try {
-    isLoading.value = true
+    loadingStore.setLoading(true)
 
     await login({ email, password });
 
-    await navigateTo('/')
 
+    return await navigateTo('/')
   } catch (error) {
     toast.add({
       title: 'Error',
@@ -34,9 +35,10 @@ async function onSubmit(event: FormSubmitEvent<LoginSchema>) {
       color: 'gray'
     })
   } finally {
-    isLoading.value = false
+    loadingStore.setLoading(false)
   }
 }
+
 </script>
 
 <template>

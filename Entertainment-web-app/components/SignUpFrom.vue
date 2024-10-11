@@ -12,7 +12,8 @@ const state = reactive({
   passwordConfirmation: ""
 })
 
-const isLoading = ref(false)
+const loadingStore = useLoadingStore()
+const { isLoading } = storeToRefs(loadingStore)
 
 
 
@@ -22,7 +23,7 @@ async function onSubmit(event: FormSubmitEvent<SignUpSchema>) {
   if (!email || !password || !passwordConfirmation) return
 
   try {
-    isLoading.value = true
+    loadingStore.setLoading(true)
 
     const newUser = await createUser({ email, password })
 
@@ -47,7 +48,7 @@ async function onSubmit(event: FormSubmitEvent<SignUpSchema>) {
       color: 'gray'
     })
   } finally {
-    isLoading.value = false
+    loadingStore.setLoading(false)
   }
 
 }
