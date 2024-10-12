@@ -32,8 +32,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://www.frontendmentor.io/solutions/nuxtjs-typescript-directus-tailwind-api-sLiw22Va40)
-- Live Site URL: [Add live site URL here](https://entertainment-web-app-lovat-nine.vercel.app/)
+- Solution URL: [www.frontendmentor.io](https://www.frontendmentor.io/solutions/nuxtjs-typescript-directus-tailwind-api-sLiw22Va40)
+- Live Site URL: [www.entertainment-web-app.com](https://entertainment-web-app-lovat-nine.vercel.app/)
 
 ### Built with
 
