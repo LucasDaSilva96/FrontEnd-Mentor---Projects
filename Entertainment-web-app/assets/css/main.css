@@ -5,6 +5,8 @@
 
 body {
   font-family: 'Outfit', sans-serif !important;
+  background-color: #10141E;
+  min-height: 100vh;
 }
 
 @layer components {

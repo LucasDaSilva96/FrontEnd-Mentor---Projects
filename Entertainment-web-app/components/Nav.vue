@@ -89,7 +89,7 @@ const items = [
     </nav>
 
     <UDropdown :items="items" :ui="{ item: { disabled: 'cursor-text select-text' } }"
-      :popper="{ placement: 'bottom-start' }" class="z-50">
+      :popper="{ placement: 'bottom-start' }" class="z-50 bg-greyishBlue">
       <UAvatar src="/images/image-avatar.png" />
 
       <template #account="{ item }">
