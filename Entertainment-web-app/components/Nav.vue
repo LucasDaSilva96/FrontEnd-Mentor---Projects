@@ -94,7 +94,7 @@ const items = [
 
       <template #account="{ item }">
         <div class="text-left">
-          <p class="text-gray-900/80">
+          <p>
             Signed in as
           </p>
           <p class="truncate font-medium text-gray-900">
