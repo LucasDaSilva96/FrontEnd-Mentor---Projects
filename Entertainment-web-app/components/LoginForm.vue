@@ -47,7 +47,7 @@ async function onSubmit(event: FormSubmitEvent<LoginSchema>) {
 <template>
   <div
     class="min-w-[327px] max-w-[400px] w-full p-5 bg-semiDarkBlur min-h-[373px] rounded-lg flex flex-col justify-evenly gap-3">
-    <h1 class="heading-L">Login</h1>
+    <h1 class="heading-L text-white">Login</h1>
 
     <UForm :schema="loginSchema" :state="state" class="space-y-6" @submit.prevent="onSubmit">
       <UFormGroup name="email" class="text-center text-red">
@@ -73,7 +73,7 @@ async function onSubmit(event: FormSubmitEvent<LoginSchema>) {
     </UForm>
 
     <div>
-      <p class="body-M text-center mt-3">
+      <p class="body-M text-center mt-3 text-white">
         Don't have an account?
         <NuxtLink class="text-red ml-2" to="/signUp">Sign Up</NuxtLink>
       </p>

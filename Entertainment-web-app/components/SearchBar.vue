@@ -28,7 +28,7 @@ watch([searchQuery, route], () => {
     </svg>
 
     <input type="text" v-model="searchQuery"
-      class="w-full heading-M p-2 border-b-2 border-transparent outline-none focus:border-greyishBlue transition-all"
+      class="w-full heading-M p-2 border-b-2 border-transparent outline-none focus:border-greyishBlue transition-all bg-transparent"
       :placeholder="props.placeholder" />
   </div>
 </template>
