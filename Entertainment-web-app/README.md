@@ -32,8 +32,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [Add solution URL here](https://www.frontendmentor.io/solutions/nuxtjs-typescript-directus-tailwind-api-sLiw22Va40)
+- Live Site URL: [Add live site URL here](https://entertainment-web-app-lovat-nine.vercel.app/)
 
 ### Built with
 
@@ -63,6 +63,6 @@ These learnings have not only helped me build a better project but also equipped
 
 ## Author
 
-- Website - [Add your name here](https://www.your-site.com)
+- Website - [www.lucasDev.com](https://next-portfolio-three-mu.vercel.app/)
 - Frontend Mentor - [@LucasDaSilva96](https://www.frontendmentor.io/profile/LucasDaSilva96)
 - LinkedIn - [Lucas Da Silva](https://www.linkedin.com/in/lucas-da-silva-9955911a0/)
