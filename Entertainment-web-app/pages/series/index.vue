@@ -46,7 +46,7 @@ onMounted(async () => {
   </section>
 
   <div v-else-if="!isLoading && !getSeries.length">
-    <h1 class="heading-L">No TV-series found</h1>
+    <h1 class="heading-L text-white">No TV-series found</h1>
   </div>
 
 </template>

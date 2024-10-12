@@ -64,13 +64,13 @@ onMounted(async () => {
 <template>
   <div v-if="!isLoading && data">
     <header class="max-w-[1100px] space-y-4 overflow-hidden">
-      <h1 class="heading-L">Trending</h1>
+      <h1 class="heading-L text-white">Trending</h1>
 
       <Carousel :isTrendingData="isTrendingData" />
 
     </header>
     <section class="w-full space-y-4 mt-4">
-      <h2 class="heading-L">Recommended for you</h2>
+      <h2 class="heading-L text-white">Recommended for you</h2>
 
 
       <div v-if="notTrendingData" class="flex items-center gap-4 flex-wrap">

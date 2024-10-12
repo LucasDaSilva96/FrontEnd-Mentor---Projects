@@ -83,7 +83,7 @@ async function onSubmit(event: FormSubmitEvent<SignUpSchema>) {
 
 
       <button type="submit" :disabled="isLoading"
-        class="bg-red w-full flex items-center justify-center rounded-md py-3 transition-colors hover:bg-white hover:text-black body-M focus:bg-red focus:text-white">
+        class="bg-red w-full flex items-center justify-center rounded-md py-3 transition-colors hover:bg-white hover:text-black body-M focus:bg-red focus:text-white text-white">
         <span v-if="!isLoading">
           Create an account
         </span>

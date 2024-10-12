@@ -52,7 +52,7 @@ onMounted(async () => {
   </section>
 
   <div v-else>
-    <h1 class="heading-L">No bookmarks found</h1>
+    <h1 class="heading-L text-white">No bookmarks found</h1>
   </div>
 
 </template>
