@@ -37,6 +37,57 @@ export const useDataStore = defineStore('data', () => {
     }
   }
 
+  // Define the search function
+  function search(query: string, path: string) {
+    switch (path) {
+      case '/':
+        if (query === '') {
+          notTrending.value = allData.value.filter(
+            (item) => item.isTrending === false
+          );
+          return;
+        }
+        notTrending.value = notTrending.value.filter((item) =>
+          item.title.toLowerCase().includes(query.toLowerCase())
+        );
+        break;
+      case '/movies':
+        if (query === '') {
+          movies.value = allData.value.filter(
+            (item) => item.category === 'Movie'
+          );
+          return;
+        }
+        movies.value = movies.value.filter((item) =>
+          item.title.toLowerCase().includes(query.toLowerCase())
+        );
+        break;
+      case '/series':
+        if (query === '') {
+          series.value = allData.value.filter(
+            (item) => item.category === 'TV Series'
+          );
+          return;
+        }
+        series.value = series.value.filter((item) =>
+          item.title.toLowerCase().includes(query.toLowerCase())
+        );
+        break;
+      case '/bookmark':
+        if (query === '') {
+          bookmarks.value = allData.value.filter((item) => item.isBookmarked);
+          return;
+        }
+        bookmarks.value = bookmarks.value.filter((item) =>
+          item.title.toLowerCase().includes(query.toLowerCase())
+        );
+        break;
+
+      default:
+        return allData.value;
+    }
+  }
+
   // Define the computed properties
   const getDataAllData = computed(() => allData.value);
   const getMovies = computed(() => movies.value);
@@ -54,5 +105,6 @@ export const useDataStore = defineStore('data', () => {
     getIsTrending,
     getNotTrending,
     toggleBookmark,
+    search,
   };
 });

@@ -1,12 +1,15 @@
 <script setup lang="ts">
 
 const loadingStore = useLoadingStore()
+
+const route = useRoute()
+
 </script>
 
 <template>
   <div class="w-full flex flex-col lg:flex-row">
     <div class="p-4 lg:min-w-[90px]">
-      <div class="lg:fixed">
+      <div class="lg:fixed z-[100]">
         <Nav />
       </div>
     </div>

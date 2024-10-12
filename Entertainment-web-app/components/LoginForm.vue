@@ -6,9 +6,12 @@ const toast = useToast()
 
 const { login } = useDirectusAuth();
 
+const USER_EMAIL = import.meta.env.VITE_USER_EMAIL as string
+const USER_PASSWORD = import.meta.env.VITE_USER_PASSWORD as string
+
 const state = reactive({
-  email: "",
-  password: ""
+  email: USER_EMAIL,
+  password: USER_PASSWORD
 })
 
 const loadingStore = useLoadingStore()

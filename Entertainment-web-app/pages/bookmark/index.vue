@@ -5,6 +5,7 @@ definePageMeta({
   layout: 'home',
 })
 
+
 const dataStore = useDataStore();
 const { getBookmarks } = storeToRefs(dataStore)
 const loadingStore = useLoadingStore()

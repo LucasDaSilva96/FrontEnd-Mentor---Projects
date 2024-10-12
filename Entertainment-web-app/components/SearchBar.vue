@@ -4,6 +4,18 @@ const props = defineProps<{
   placeholder: string
 }>()
 
+const searchQuery = ref('')
+
+const dataStore = useDataStore()
+const route = useRoute();
+
+
+
+watch([searchQuery, route], () => {
+  dataStore.search(searchQuery.value, route.path)
+})
+
+
 </script>
 
 <template>
@@ -15,7 +27,7 @@ const props = defineProps<{
         fill="#FFF" />
     </svg>
 
-    <input type="text"
+    <input type="text" v-model="searchQuery"
       class="w-full heading-M p-2 border-b-2 border-transparent outline-none focus:border-greyishBlue transition-all"
       :placeholder="props.placeholder" />
   </div>
