@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <div class="font-outline">
+  <div class="font-outline bg-darkBlue">
 
     <NuxtLayout>
       <UContainer>
