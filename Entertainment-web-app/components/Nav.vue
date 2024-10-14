@@ -97,7 +97,7 @@ const items = [
           <p>
             Signed in as
           </p>
-          <p class="truncate font-medium text-gray-900">
+          <p class="truncate font-medium text-gray-900 dark:text-slate-50/80">
             {{ item.label }}
           </p>
         </div>
