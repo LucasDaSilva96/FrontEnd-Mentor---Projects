@@ -20,6 +20,12 @@ const countDownStore = useCountDownStore()
 
 const isLoading = ref(false)
 
+const timeHasChanged = ref(false)
+
+const handleTimeChange = () => {
+  timeHasChanged.value = true
+}
+
 const fontsObg = ref([
   {
     label: 'Aa',
@@ -86,7 +92,7 @@ const handleParentClick = (e: MouseEvent) => {
   }
 }
 
-const handleSubmit = (e: Event) => {
+const handleSubmit = () => {
   isLoading.value = true
   const promodoro = (document.getElementById('promodoro') as HTMLInputElement).value
   const shortBreak = (document.getElementById('shortBreak') as HTMLInputElement).value
@@ -100,9 +106,11 @@ const handleSubmit = (e: Event) => {
     return
   }
 
-  timeStore.setPomodoroTime(Number(promodoro))
-  timeStore.setShortBreakTime(Number(shortBreak))
-  timeStore.setLongBreakTime(Number(longBreak))
+  if (timeHasChanged.value === true) {
+    timeStore.setPomodoroTime(Number(promodoro))
+    timeStore.setShortBreakTime(Number(shortBreak))
+    timeStore.setLongBreakTime(Number(longBreak))
+  }
 
   fontStore.setFont(font.value as 'Kumbh-Sans' | 'Roboto-Slab' | 'Space-Mono')
 
@@ -110,7 +118,9 @@ const handleSubmit = (e: Event) => {
 
   setTimeout(() => {
     isLoading.value = false
-    countDownStore.reset()
+    if (timeHasChanged.value === true) {
+      countDownStore.reset()
+    }
     modalStore.setIsOpen(false)
   }, 2500)
 
@@ -140,8 +150,8 @@ const handleSubmit = (e: Event) => {
             <span aria-label="promodoro minutes" class="font-bold leading-[14.88px] text-[#1e213fb4]">
               promodoro
             </span>
-            <input type="number" id="promodoro" name="promodoro" required min="5" step="5" value="25"
-              class="bg-[#EFF1FA] h-[48px] w-[140px] rounded-[10px] text-darkBlue px-2 font-bold" />
+            <input @change="handleTimeChange" type="number" id="promodoro" name="promodoro" required min="5" step="5"
+              max="60" value="25" class="bg-[#EFF1FA] h-[48px] w-[140px] rounded-[10px] text-darkBlue px-2 font-bold" />
           </label>
 
           <label for="shortBreak"
@@ -149,9 +159,9 @@ const handleSubmit = (e: Event) => {
             <span aria-label="shortBreak minutes" class="font-bold leading-[14.88px] text-[#1e213fb4]">
               short break
             </span>
-            <input type="number" id="shortBreak" name="shortBreak"
+            <input @change="handleTimeChange" type="number" id="shortBreak" name="shortBreak"
               class="bg-[#EFF1FA] h-[48px] w-[140px] rounded-[10px] text-darkBlue px-2 font-bold" required min="5"
-              step="5" value="5" />
+              max="60" step="5" value="5" />
           </label>
 
           <label for="longBreak"
@@ -159,8 +169,8 @@ const handleSubmit = (e: Event) => {
             <span aria-label="long break minutes" class="font-bold leading-[14.88px] text-[#1e213fb4]">
               long break
             </span>
-            <input type="number" id="longBreak" name="longBreak" min="5" step="5" value="15" required
-              class="bg-[#EFF1FA] h-[48px] w-[140px] rounded-[10px] text-darkBlue px-2 font-bold" />
+            <input @change="handleTimeChange" type="number" id="longBreak" name="longBreak" min="5" step="5" value="15"
+              max="60" required class="bg-[#EFF1FA] h-[48px] w-[140px] rounded-[10px] text-darkBlue px-2 font-bold" />
           </label>
         </div>
       </div>

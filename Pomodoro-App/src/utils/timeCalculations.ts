@@ -1,6 +1,9 @@
-export function timeToPercentage(milliseconds: number) {
-  const totalMilliseconds = 60000 // 1 minute in milliseconds
-  const percentage = (milliseconds / totalMilliseconds) * 100
-
-  return percentage
+export function timeToPercentage(milliseconds: number, startValue: number) {
+  // Convert milliseconds to minutes
+  const minutes = milliseconds / 60000
+  // Calculate percentage of time passed
+  const percentage = (minutes / startValue) * 100
+  // Return percentage, but not more than 100
+  const result = Math.floor(percentage) > 100 ? 100 : Math.floor(percentage)
+  return result
 }
